@@ -1,6 +1,7 @@
-module.exports = function(versionService) {
+module.exports = function($scope, versionService) {
   versionService.getVersions()
-    .then(function(versions) {
-      console.log("versions: ", versions);
+    .then(function(response) {
+      console.log("versions: ", response.data);
+      $scope.versions = response.data;
     });
 };

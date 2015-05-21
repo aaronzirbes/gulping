@@ -5,7 +5,7 @@ var browserify = require('browserify');
 
 gulp.task('build-public', function() {
 
-  gulp.src('public/**/*.html')
+  gulp.src('public/**/*.*')
       .pipe(gulp.dest('build'));
 
 });

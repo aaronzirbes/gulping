@@ -9,7 +9,12 @@
       Replace this
     </sup-bitch>
     <div ng-controller="versionController">
-      somethin
+      <ul>
+      <li ng-repeat="version in versions">
+      {{version.service}}: {{version.consulStatus}}
+      <strong>{{version.versionInfo.gitCommit}} </strong>
+      </li>
+    </ul>
     </div>
     <script src="assets/scripts/main.js" ></script>
   </body>
