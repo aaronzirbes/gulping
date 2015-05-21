@@ -7,5 +7,8 @@ angular.module('bitchPlease', modules)
     return {
       restrict: 'E',
       template: '<h1>Your Mother</h1>'
-    };
-  });
+    }
+  })
+  .service('versionService', require('./services/version-service/'))
+  .controller('versionController',require('./controllers/version-controller/'));
+
