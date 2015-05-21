@@ -1,17 +1,17 @@
 var gulp = require('gulp');
 var requiredir = require('require-dir');
+var del = require('del');
 
 requiredir('gulp/tasks');
 
-gulp.task('default', function() {
-  console.log('doing it');
-});
-
 gulp.task('build', 
   [
+    'build-public',
     'build-scripts',
     'build-styles',
-    'build-public',
   ]
 );
 
+gulp.task('clean', function() {
+  del('build');
+});

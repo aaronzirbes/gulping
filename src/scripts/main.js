@@ -4,6 +4,6 @@ angular.module('bitchPlease')
   .directive('supBitch', function() {
     return {
       restrict: 'E',
-      template: '<h1>Your Mom</h1>'
+      template: '<h1>Your Mother</h1>'
     };
   });
