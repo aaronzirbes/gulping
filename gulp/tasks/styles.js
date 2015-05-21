@@ -1,12 +1,21 @@
 var gulp = require('gulp');
 var less = require('gulp-less');
 var plumber = require('gulp-plumber');
+var gutil = require('gulp-util');
 
 gulp.task('build-styles', function() {
 
+  var onError = function(err) {
+    gutil.beep();     // growl notification
+    gutil.log(err);   // show me
+    this.emit('end'); // do no more stuff since it will break anyway
+  }
+
   gulp
     .src('src/styles/main.less')
-    .pipe(plumber())
+    .pipe(plumber({
+      errorHandler: onError
+    }))
     .pipe(less())
     .pipe(gulp.dest('build/assets/styles'));
 });
