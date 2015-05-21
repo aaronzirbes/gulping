@@ -4,5 +4,5 @@ var requiredir = require('require-dir');
 requiredir('gulp/tasks');
 
 gulp.task('default', function() {
-  console.log('tedstsdfdfg');
+  console.log('doing it');
 });
