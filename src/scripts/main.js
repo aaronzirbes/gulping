@@ -1,6 +1,8 @@
 var angular = require('angularjs');
 
-angular.module('bitchPlease')
+var modules = [];
+
+angular.module('bitchPlease', modules)
   .directive('supBitch', function() {
     return {
       restrict: 'E',
