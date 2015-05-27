@@ -7,14 +7,47 @@ body {
 
 .thing {
   display: inline-block;
-  width:100px;
+  width:200px;
   border:1px solid #ccc;
   padding:10px;
   margin-bottom: 10px;
-  
+
   > ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
 }
+
+a.service-type {
+    padding-left: 18px;
+    background-position: center left;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+a.service-type-WEBSERVER {
+    background-image: url("images/nginx-icon.png");
+}
+a.service-type-KAFKA {
+    background-image: url("images/kafka-icon.png");
+}
+a.service-type-RABBIT {
+    background-image: url("images/rabbit-icon.png");
+}
+a.service-type-APP {
+    background-image: url("images/java-icon.png");
+}
+a.service-type-UNKNOWN {
+    background-image: url("images/facepalm-smiley-emoticon.gif");
+}
+
+h2.status-passing {
+    background-color: green;
+}
+h2.status-warning {
+    background-color: orange;
+}
+h2.status-critical, h2.status-failing {
+    background-color: red;
+}
+

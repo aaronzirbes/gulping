@@ -2,11 +2,11 @@ var angular = require('angularjs');
 
 var modules = [];
 
-angular.module('bitchPlease', modules)
+angular.module('omnicientVersion', modules)
   .directive('supBitch', function() {
     return {
       restrict: 'E',
-      template: '<h1>Your Mother</h1>'
+      template: '<h1>Omnicient Version Information</h1>'
     }
   })
   .service('versionService', require('./services/version-service/'))

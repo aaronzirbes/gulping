@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bitch Please!</title>
+    <title>Omnicient Version Info Service</title>
     <link rel="stylesheet" href="assets/styles/main.css">
   </head>
-  <body ng-app="bitchPlease">
+  <body ng-app="omnicientVersion">
     <sup-bitch>
       Replace this
     </sup-bitch>
     <div ng-controller="versionController">
       <ul>
-      <li ng-repeat="version in versions">
-      {{version.service}}: {{version.consulStatus}}
-      <strong>{{version.versionInfo.gitCommit}} </strong>
-      </li>
+        <div class="thing" ng-repeat="version in versions">
+          <h2 class="status-{{version.consulStatus}}">
+            <a class="service-type service-type-{{version.serviceType}}" href="{{version.endpoint}}">
+              {{version.service}}
+            </a>
+          </h2>
+          <dl>
+            {{version.ip}}
+            <dt>serviceType</dt><dd>{{version.serviceType}}</dd>
+            <dl ng-if="version.versionInfo">
+              <dt>artifactId</dt><dd>{{version.versionInfo.artifactId}}</dd>
+              <dt>buildId</dt><dd>{{version.versionInfo.buildId}}</dd>
+              <dt>buildJvm</dt><dd>{{version.versionInfo.buildJvm}}</dd>
+              <dt>buildNumber</dt><dd>{{version.versionInfo.buildNumber}}</dd>
+              <dt>buildTag</dt><dd>{{version.versionInfo.buildTag}}</dd>
+              <dt>gitBranch</dt><dd>{{version.versionInfo.gitBranch}}</dd>
+              <dt>gitCommit</dt><dd>{{version.versionInfo.gitCommit}}</dd>
+              <dt>gitRemoteOrigin</dt><dd>{{version.versionInfo.gitRemoteOrigin}}</dd>
+              <dt>groupId</dt><dd>{{version.versionInfo.groupId}}</dd>
+              <dt>nodeName</dt><dd>{{version.versionInfo.nodeName}}</dd>
+              <dt>version</dt><dd>{{version.versionInfo.version}}</dd>
+            </dl>
+            <div ng-if="!version.versionInfo">
+              <dt>versionError</dt><dd>{{version.versionError}}</dd>
+              <dt>versionResponse</dt><dd>{{version.versionResponse}}</dd>
+            </div>
+          <dl>
+        </li>
     </ul>
     </div>
     <script src="assets/scripts/main.js" ></script>
