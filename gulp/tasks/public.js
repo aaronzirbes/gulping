@@ -1,11 +1,13 @@
 var gulp = require('gulp');
-var buffer = require('vinyl-buffer');
-var source = require('vinyl-source-stream');
-var browserify = require('browserify');
+var plumber = require('gulp-plumber');
+var onError = require('./error-handler');
 
 var buildPublicTask = function() {
 
   gulp.src('public/**/*.*')
+    .pipe(plumber({
+      errorHandler: onError
+    }))
       .pipe(gulp.dest('build'));
 
 };
