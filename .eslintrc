@@ -1,0 +1,21 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "$": true,
+    "before": true,
+    "beforeEach": true,
+    "afterEach": true,
+    "describe": true,
+    "it": true,
+    "xit": true
+  },
+  "rules": {
+    "quotes": "single",
+    "strict": false,
+    "no-underscore-dangle": false,
+    "no-unused-expressions": false
+  }
+}

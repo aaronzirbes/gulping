@@ -3,22 +3,16 @@ var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var plumber = require('gulp-plumber');
-var gutil = require('gulp-util');
+var eslint = require('gulp-eslint');
+var onError = require('./error-handler');
 
-gulp.task('build-scripts', function() {
-
+var buildScriptsTask = function() {
   var vendorDir = 'bower_components';
 
   var options = {
     debug: true,
     paths: [vendorDir]
   };
-
-  var onError = function(err) {
-    gutil.beep();     // growl notification
-    gutil.log(err);   // show me
-    this.emit('end'); // do no more stuff since it will break anyway
-  }
 
   browserify('src/scripts/main.js', options)
     .bundle()
@@ -29,4 +23,19 @@ gulp.task('build-scripts', function() {
     .pipe(buffer())
     .pipe(gulp.dest('build/assets/scripts'));
 
-});
+};
+
+var checkScriptsTask = function() {
+  gulp.src('src/scripts/**/*.js')
+    .pipe(plumber({
+      errorHandler: onError
+    }))
+    .pipe(eslint())
+    .pipe(eslint.format());
+};
+
+gulp.task('build-scripts', ['check-scripts'], buildScriptsTask);
+exports.buildScriptsTask = buildScriptsTask;
+
+gulp.task('check-scripts', checkScriptsTask);
+exports.checkScriptsTask = checkScriptsTask;
