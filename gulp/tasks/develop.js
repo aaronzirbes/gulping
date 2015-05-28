@@ -1,9 +1,13 @@
 var gulp = require('gulp');
 var watch = require('gulp-watch');
 
-gulp.task('dev',function() {
+var devTask = function() {
   gulp.start('build');
   watch([ 'src/**/*.*', 'public/**/*.html' ], function() {
       gulp.start('build');
     });
-});
+};
+
+gulp.task('dev', devTask);
+
+exports.devTask = devTask;

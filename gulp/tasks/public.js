@@ -3,9 +3,13 @@ var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 
-gulp.task('build-public', function() {
+var buildPublicTask = function() {
 
   gulp.src('public/**/*.*')
       .pipe(gulp.dest('build'));
 
-});
+};
+
+gulp.task('build-public', buildPublicTask);
+
+exports.buildPublicTask = buildPublicTask;

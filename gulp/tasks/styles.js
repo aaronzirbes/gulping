@@ -3,7 +3,7 @@ var less = require('gulp-less');
 var plumber = require('gulp-plumber');
 var gutil = require('gulp-util');
 
-gulp.task('build-styles', function() {
+var buildStylesTask = function() {
 
   var onError = function(err) {
     gutil.beep();     // growl notification
@@ -18,4 +18,8 @@ gulp.task('build-styles', function() {
     }))
     .pipe(less())
     .pipe(gulp.dest('build/assets/styles'));
-});
+};
+
+gulp.task('build-styles', buildStylesTask);
+
+exports.buildStylesTask = buildStylesTask;

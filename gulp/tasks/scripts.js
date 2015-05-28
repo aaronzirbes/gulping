@@ -5,7 +5,7 @@ var browserify = require('browserify');
 var plumber = require('gulp-plumber');
 var gutil = require('gulp-util');
 
-gulp.task('build-scripts', function() {
+var buildScriptsTask = function() {
 
   var vendorDir = 'bower_components';
 
@@ -29,4 +29,8 @@ gulp.task('build-scripts', function() {
     .pipe(buffer())
     .pipe(gulp.dest('build/assets/scripts'));
 
-});
+};
+
+gulp.task('build-scripts', buildScriptsTask);
+
+exports.buildScriptsTask = buildScriptsTask;
