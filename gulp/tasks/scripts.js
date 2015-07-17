@@ -16,6 +16,7 @@ var buildScriptsTask = function() {
 
   browserify('src/scripts/main.js', options)
     .bundle()
+    .on('error', onError)
     .pipe(plumber({
       errorHandler: onError
     }))
